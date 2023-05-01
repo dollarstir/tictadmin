@@ -13,7 +13,7 @@ class Del extends Database
                     $operator = $value[1];
                     $colunmvalue = $value[2];
                     if ($vs == '') {
-                        $vs .= 'WHERE '.$colunmname.' '.$operator.' :'.$colunmname;
+                        $vs .= 'WHERE ' . $colunmname . ' ' . $operator . ' :' . $colunmname;
                     } else {
                         $vs .= " $conjunction $colunmname $operator :$colunmname";
                     }
@@ -27,12 +27,12 @@ class Del extends Database
             foreach ($target as $value) {
                 if (is_array($value)) {
                     if (count($value) == 3) {
-                        $sel->bindValue(':'.$value[0], $value[2]);
+                        $sel->bindValue(':' . $value[0], $value[2]);
                     }
                 }
             }
             $sel->execute();
-            $msg = 'deleted';
+            $msg = 'success';
         } catch (PDOException $e) {
             $msg = $e->getMessage();
         }

@@ -1,47 +1,130 @@
 <?php
 
 require '../loader/autoloader.php';
+$noticecontroller = new noticecontroller();
+$noticemodel = new noticemodel();
+$slidemodel = new sliderModel();
+$slidercontroller = new sliderController();
 
 if (isset($_GET['action'])) {
     switch ($_GET['action']) {
-        case 'welcome':
 
-            function psd($url, $data)
-            {
-                $curl = curl_init($url);
-                curl_setopt($curl, CURLOPT_POST, true);
-                curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query([$data]));
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                $response = curl_exec($curl);
-                curl_close($curl);
 
-                return $response;
-            }
+            // *********************************************************************************************************************************
+            // ***********NOTICE****************************************************************************************************************
+
+        case 'getsignlenotice':
+
             extract($_POST);
-            // $fields = ['email' => $usermail];
+            $noticecontroller->editnotice($notice_id);
 
-            //url-ify the data for the POST
-            // $dd = http_build_query($fields);
-            $usermail =str_replace('.com','dotcom',$usermail);
-            $usermail =str_replace('@','yolk',$usermail);
-            $rep =file_get_contents('http://phpyolk.com/newuser/'.$usermail);
-            // echo 'helllo';
-            $rr = json_decode($rep);
-            if($rr =='success'){
-                $user ='user';
-                $value = 'success';
-                setcookie($user,$value,86400 * 30000,'/');
-                echo 'success';
-            }
-
-            // $mail = new Mail();
-            // $response = $mail->sendmail('www.phpyolk.com', 'New user', 'New user has started using yolk', 'Yolk User', ['kpin463@gmail.com']);
-            // echo $response;
 
             break;
 
+
+        case 'editnotice':
+
+            extract($_POST);
+            $data = $_POST;
+
+            echo json_encode($noticemodel->saveeditnotice($data));
+
+            break;
+
+        case 'getaddnoticeform':
+
+            $noticecontroller->addnotice();
+            break;
+
+
+        case 'addnotice':
+
+            extract($_POST);
+            $data = $_POST;
+            echo json_encode($noticemodel->addnotice($data));
+            break;
+
+        case 'getdelenoticedailog':
+
+            extract($_POST);
+
+            $noticecontroller->deletenotice($notice_id, $modalid);
+
+
+            break;
+
+        case 'deletenotice':
+            extract($_POST);
+
+
+            echo json_encode($noticemodel->deletenotice($notice_id));
+            break;
+
+
+
+
+            // *******************************END NOTICE***********************************************************************************
+
+
+
+
+
+            // *******************************************************************************************************************************
+            // ******************************BEGIN SLIDER *************************************************************************************
+
+
+
+            // geetting slider form
+        case 'getaddsliderform':
+
+            $slidercontroller->addslider();
+            break;
+
+            // submitting new slider 
+        case 'addslider':
+            extract($_POST);
+            $data = $_POST;
+
+            echo json_encode($slidemodel->addslider($data));
+            break;
+
+
+            // getting single slider info for editing
+
+        case 'getsingleslider':
+            extract($_POST);
+            $slidercontroller->editsingleslider($slider_id);
+            break;
+
+            // updating slider
+
+        case 'updateslider':
+
+            extract($_POST);
+            $data = $_POST;
+            echo json_encode($slidemodel->updateslider($data));
+            break;
+
+
+
+
+
+
+            // ***********************************************************************************************************************************
+            // ********Refresh Content************************************************************************************************************
+
+
+        case 'refresh':
+            extract($_GET);
+            $class =  new $class();
+            $class->$function();
+            break;
+
+
+
+
         default:
 
-        break;
+            break;
     }
 }

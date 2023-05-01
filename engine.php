@@ -30,8 +30,40 @@ $router = new Router([
     new Route(
         '/tictadmin',
         function ($context) {
-            return Viewer::view('install.php', $context);
+            return Viewer::view('public/view/index.php', $context);
         }
     ),
+
+
+    new Route(
+        '/tictadmin/dashboard',
+        function ($context) {
+            return Viewer::view('public/view/index.php', $context);
+        }
+    ),
+
+    new Route(
+        '/tictadmin/mysettings',
+        function ($context) {
+            return Viewer::view('public/view/appsettings.php', $context);
+        }
+    ),
+
+    new Route(
+        '/tictadmin/slides',
+        function ($context) {
+            return Viewer::view('public/view/slider.php', $context);
+        }
+    ),
+
+    new Route(
+        '/tictadmin/announcements',
+        function ($context) {
+            return Viewer::view('public/view/noticeboard.php', $context);
+        }
+    ),
+
+
+
 ]);
 $router->launch();
