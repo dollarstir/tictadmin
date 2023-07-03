@@ -35,7 +35,7 @@ class sliderController
                             <button type="button" class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled btneditslider" id="' . $row['slider_id'] . '" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Add to group" data-bs-original-title="Edit Detail"  data-izimodal-open="#slidermodal" data-izimodal-transitionin="fadeInDown">
                             <i class="fa fa-fw fa-pencil-alt"></i>
                         </button>
-                        <button type="button" class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled" data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Remove from group" data-bs-original-title="Delete Record">
+                        <button type="button" class="btn btn-sm btn-alt-primary me-1 js-bs-tooltip-enabled   btndeleteslider"   id="' . $row['slider_id'] . '"   data-bs-toggle="tooltip" data-bs-placement="bottom" aria-label="Remove from group" data-bs-original-title="Delete Record"   data-izimodal-open="#slideroptionmodal" data-izimodal-transitionin="fadeInDown">
                             <i class="fa fa-fw fa-trash"></i>
                         </button>
                     </div>
@@ -177,5 +177,47 @@ class sliderController
             </div>
         </form>
     </div>';
+    }
+
+
+
+    // delete notice function 
+    /**
+     * @param $slider id of notice
+     * @param $modalid iod  id of the modal to close 
+     */
+
+
+    public function deletenotice($slider_id, $modalid)
+    {
+
+        echo '<form class="frmdeleteslider">
+         <div class="mb-4">
+             <label class="form-label" for="login1-username">Are you sure you want to delete this Slider</label>
+             <input type="hidden" class="form-control" name="slider_id" placeholder="Enter announcement title"  value="' . $slider_id . '">
+ 
+            
+         </div>
+        
+ 
+        
+ 
+        
+ 
+ 
+         <div class="mb-4">
+             <div style="margin-left:30%;">
+ 
+             <button type="button" class="btn btn-danger btnclosemodal" data-modal="' . $modalid . '"   >
+                 No 
+             </button>
+ 
+             <button type="submit" class="btn btn-success" >
+                Yes <span class="loadingbtnspin" ></span>
+             </button>
+             
+             </div>
+         </div>
+     </form>';
     }
 }

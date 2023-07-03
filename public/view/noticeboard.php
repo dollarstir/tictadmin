@@ -1,10 +1,10 @@
 <?php
 
-$app = new AppController();
+$app = new appController();
 
 $staff = new staffController();
-$dashboard = new DashboardController();
-$notice = new NoticeController();
+$dashboard = new dashboardController();
+$notice = new noticeController();
 $app->apptitle('Announcement');
 
 ?>

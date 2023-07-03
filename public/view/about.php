@@ -2,8 +2,7 @@
 
 $app = new appController();
 
-$staff = new staffController();
-$slidercontroller = new sliderController();
+$aboutcontroller  = new aboutController();
 $dashboard = new dashboardController();
 $notice = new noticeController();
 $app->apptitle('Slider');
@@ -17,16 +16,16 @@ $app->apptitle('Slider');
         <main id="main-container">
             <div class="content">
 
-                <h2 class="content-heading">Home Page Sliders</h2>
-                <div>
+                <h2 class="content-heading">About Page</h2>
+                <!-- <div>
                     <button type="button" class="btn btn-success me-1 mb-1 btnaddslider" data-izimodal-open="#slidermodal" data-izimodal-transitionin="fadeInDown">
                         <i class="fa fa-plus opacity-50 me-1"></i> Add New
                     </button>
 
                 </div>
-                <hr>
-                <div class="slidercont" id="slidercont">
-                    <?= $slidercontroller->allsliders(); ?>
+                <hr> -->
+                <div class="aboutcont" id="aboutcont">
+                    <?= $aboutcontroller->aboutinfo(); ?>
                 </div>
             </div>
 

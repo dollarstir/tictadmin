@@ -98,4 +98,24 @@ class sliderModel
             return ['type' => 'success', 'message' => 'Slider Updated successfuly'];
         }
     }
+
+
+    // delete notice 
+    /**
+     * @param $slider_id
+     * @return mixed
+     */
+    public function deleteslider($slider_id)
+    {
+
+        if (delete('slider', [['slider_id', '=', $slider_id]]) == 'success') {
+
+
+            return ['type' => 'success', 'message' => 'Slider deleted successfully'];
+        } else {
+
+
+            return ['type' => 'error', 'message' => 'Failed to delete slider'];
+        }
+    }
 }

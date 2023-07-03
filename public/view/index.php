@@ -1,9 +1,9 @@
 <?php
 
-$app = new AppController();
+$app = new appController();
 
 $staff = new staffController();
-$dashboard = new DashboardController();
+$dashboard = new dashboardController();
 $app->apptitle('Dashboard');
 
 ?>
@@ -18,7 +18,7 @@ $app->apptitle('Dashboard');
 
         <?= $dashboard->carddisplay() ?>
 
-        <?= $staff->liststaff() ?>
+      
 
 
 
@@ -28,5 +28,7 @@ $app->apptitle('Dashboard');
 
 
       </div>
+
+      
     </main>
     <?= $app->appfooter() ?>

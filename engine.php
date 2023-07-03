@@ -43,9 +43,16 @@ $router = new Router([
     ),
 
     new Route(
-        '/tictadmin/mysettings',
+        '/tictadmin/app',
         function ($context) {
             return Viewer::view('public/view/appsettings.php', $context);
+        }
+    ),
+
+    new Route(
+        '/tictadmin/profile',
+        function ($context) {
+            return Viewer::view('public/view/profilesettings.php', $context);
         }
     ),
 
@@ -60,6 +67,27 @@ $router = new Router([
         '/tictadmin/announcements',
         function ($context) {
             return Viewer::view('public/view/noticeboard.php', $context);
+        }
+    ),
+
+    new Route(
+        '/tictadmin/about',
+        function ($context) {
+            return Viewer::view('public/view/about.php', $context);
+        }
+    ),
+
+    new Route(
+        '/tictadmin/staff',
+        function ($context) {
+            return Viewer::view('public/view/staff.php', $context);
+        }
+    ),
+
+    new Route(
+        '/tictadmin/login',
+        function ($context) {
+            return Viewer::view('public/view/op_auth.php', $context);
         }
     ),
 
